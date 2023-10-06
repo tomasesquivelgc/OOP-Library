@@ -5,10 +5,9 @@ require_relative 'rental'
 
 class App
   def initialize
-    @students = []
-    @teachers = []
     @books = []
     @rentals = []
+    @people = []
   end
 
   def list_books
@@ -20,12 +19,11 @@ class App
   end
 
   def list_people
-    @students.each do |student|
-      puts student
+    puts "---------------------------------"
+    @people.each_with_index do |person, index|
+      puts "#{index + 1}. #{person.name} - #{person.class}"
     end
-    @teachers.each do |teacher|
-      puts teacher
-    end
+    puts "---------------------------------"
   end
 
   def create_student
@@ -35,7 +33,7 @@ class App
     name = gets.chomp
     print 'Has parent permission? (Y/N): '
     permission = gets.chomp.downcase == 'y'
-    @students << if permission
+    @people << if permission
                    Student.new(age, name)
                  else
                    Student.new(age, name, parent_permission: false)
@@ -49,7 +47,7 @@ class App
     name = gets.chomp
     print 'Specialization: '
     specialization = gets.chomp
-    @teachers << Teacher.new(age, specialization, name: name)
+    @people << Teacher.new(age, specialization, name: name)
   end
 
   def create_person
@@ -64,6 +62,7 @@ class App
       puts 'Person type not recognized'
     end
     puts 'Person created successfully'
+    puts "---------------------------------"
   end
 
   def create_book
@@ -72,7 +71,8 @@ class App
     print 'Author: '
     author = gets.chomp
     @books << Book.new(title, author)
-    puts 'Book created successfully'
+    puts 'Book created successfully!'
+    puts "---------------------------------"
   end
 
   def create_rental
@@ -84,13 +84,16 @@ class App
     person_index = gets.chomp.to_i - 1
     puts 'Date: '
     date = gets.chomp
-    @rentals << Rental.new(date, @books[book_index], @people[person_index])
-    puts 'Rental created successfully'
+    @rentals << Rental.new(date, @people[person_index], @books[book_index])
+    puts 'Rental created successfully!'
+    puts "---------------------------------"
   end
 
   def list_rentals
-    @rentals.each do |rental|
-      puts rental
+    puts "---------------------------------"
+    @rentals.each_with_index do |rental, index|
+      puts "#{index + 1}. #{rental.person.name} - #{rental.book.title} - #{rental.date}"
     end
+    puts "---------------------------------"
   end
 end
