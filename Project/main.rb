@@ -15,7 +15,7 @@ def handle_option(app, option)
 end
 
 def main
-  app = App.new
+  apps = App.new
   loop do
     puts 'Please choose an option by entering a number:'
     puts '1 - Create a person'
