@@ -20,8 +20,8 @@ class App
 
   def list_people
     puts '---------------------------------'
-    @people.each_with_index do |person, index|
-      puts "#{index + 1}. #{person.name} - #{person.class}"
+    @people.each do |person|
+      puts "#{person.id}. #{person.name} - #{person.class} "
     end
     puts '---------------------------------'
   end
@@ -61,6 +61,7 @@ class App
     else
       puts 'Person type not recognized'
     end
+    puts '---------------------------------'
     puts 'Person created successfully'
     puts '---------------------------------'
   end
@@ -71,6 +72,7 @@ class App
     print 'Author: '
     author = gets.chomp
     @books << Book.new(title, author)
+    puts '---------------------------------'
     puts 'Book created successfully!'
     puts '---------------------------------'
   end
@@ -79,12 +81,13 @@ class App
     puts 'Select a book from the following list by number'
     list_books
     book_index = gets.chomp.to_i - 1
-    puts 'Select a student from the following list by number (not id)'
+    puts 'Select a student from the following list by ID'
     list_people
     person_index = gets.chomp.to_i - 1
     puts 'Date: '
     date = gets.chomp
     @rentals << Rental.new(date, @people[person_index], @books[book_index])
+    puts '---------------------------------'
     puts 'Rental created successfully!'
     puts '---------------------------------'
   end

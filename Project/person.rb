@@ -3,12 +3,14 @@ require_relative 'capitalize_decorator'
 require_relative 'rental'
 
 class Person < Nameable
+  @@last_id = 0
   attr_accessor :name, :age, :rental
   attr_reader :id
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     super()
-    @id = rand(1..1000)
+    @@last_id += 1
+    @id = @@last_id
     @name = name
     @age = age
     @parent_permission = parent_permission
