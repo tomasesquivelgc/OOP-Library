@@ -11,19 +11,19 @@ class App
   end
 
   def list_books
-    puts "---------------------------------"
+    puts '---------------------------------'
     @books.each_with_index do |book, index|
       puts "#{index + 1}. #{book.title} by #{book.author}"
     end
-    puts "---------------------------------"
+    puts '---------------------------------'
   end
 
   def list_people
-    puts "---------------------------------"
+    puts '---------------------------------'
     @people.each_with_index do |person, index|
       puts "#{index + 1}. #{person.name} - #{person.class}"
     end
-    puts "---------------------------------"
+    puts '---------------------------------'
   end
 
   def create_student
@@ -34,10 +34,10 @@ class App
     print 'Has parent permission? (Y/N): '
     permission = gets.chomp.downcase == 'y'
     @people << if permission
-                   Student.new(age, name)
-                 else
-                   Student.new(age, name, parent_permission: false)
-                 end
+                 Student.new(age, name)
+               else
+                 Student.new(age, name, parent_permission: false)
+               end
   end
 
   def create_teacher
@@ -62,7 +62,7 @@ class App
       puts 'Person type not recognized'
     end
     puts 'Person created successfully'
-    puts "---------------------------------"
+    puts '---------------------------------'
   end
 
   def create_book
@@ -72,7 +72,7 @@ class App
     author = gets.chomp
     @books << Book.new(title, author)
     puts 'Book created successfully!'
-    puts "---------------------------------"
+    puts '---------------------------------'
   end
 
   def create_rental
@@ -86,14 +86,14 @@ class App
     date = gets.chomp
     @rentals << Rental.new(date, @people[person_index], @books[book_index])
     puts 'Rental created successfully!'
-    puts "---------------------------------"
+    puts '---------------------------------'
   end
 
   def list_rentals
-    puts "---------------------------------"
+    puts '---------------------------------'
     @rentals.each_with_index do |rental, index|
       puts "#{index + 1}. #{rental.person.name} - #{rental.book.title} - #{rental.date}"
     end
-    puts "---------------------------------"
+    puts '---------------------------------'
   end
 end
