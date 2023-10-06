@@ -94,9 +94,13 @@ class App
   end
 
   def list_rentals
+    puts 'Please select a person by ID to see their rentals'
+    list_people
+    person_id = gets.chomp.to_i
+    selected_person = @people.find { |person| person.id == person_id }
     puts '---------------------------------'
-    @rentals.each_with_index do |rental, index|
-      puts "#{index + 1}. #{rental.person.name} - #{rental.book.title} - #{rental.date}"
+    selected_person.rental.each do |rental|
+      puts "Book: #{rental.book.title} - Date: #{rental.date}"
     end
     puts '---------------------------------'
   end
