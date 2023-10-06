@@ -12,9 +12,11 @@ class App
   end
 
   def list_books
-    @books.each do |book|
-      puts book
+    puts "---------------------------------"
+    @books.each_with_index do |book, index|
+      puts "#{index + 1}. #{book.title} by #{book.author}"
     end
+    puts "---------------------------------"
   end
 
   def list_people
@@ -36,7 +38,7 @@ class App
     @students << if permission
                    Student.new(age, name)
                  else
-                   Student.new(age, name, false)
+                   Student.new(age, name, parent_permission: false)
                  end
   end
 
@@ -61,6 +63,7 @@ class App
     else
       puts 'Person type not recognized'
     end
+    puts 'Person created successfully'
   end
 
   def create_book
@@ -69,6 +72,7 @@ class App
     print 'Author: '
     author = gets.chomp
     @books << Book.new(title, author)
+    puts 'Book created successfully'
   end
 
   def create_rental
@@ -81,6 +85,7 @@ class App
     puts 'Date: '
     date = gets.chomp
     @rentals << Rental.new(date, @books[book_index], @people[person_index])
+    puts 'Rental created successfully'
   end
 
   def list_rentals
