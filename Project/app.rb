@@ -21,7 +21,7 @@ class App
   def list_people
     puts '---------------------------------'
     @people.each do |person|
-      puts "#{person.id}. #{person.name} - #{person.class} "
+      puts "ID: #{person.id} Name: #{person.name} - #{person.class} "
     end
     puts '---------------------------------'
   end
@@ -83,10 +83,11 @@ class App
     book_index = gets.chomp.to_i - 1
     puts 'Select a student from the following list by ID'
     list_people
-    person_index = gets.chomp.to_i - 1
+    person_id = gets.chomp.to_i
+    selected_person = @people.find { |person| person.id == person_id }
     puts 'Date: '
     date = gets.chomp
-    @rentals << Rental.new(date, @people[person_index], @books[book_index])
+    @rentals << Rental.new(date, selected_person, @books[book_index])
     puts '---------------------------------'
     puts 'Rental created successfully!'
     puts '---------------------------------'
