@@ -2,8 +2,7 @@ require_relative 'create_user'
 require_relative 'book'
 require_relative 'rental'
 
-
-class Create_book
+class CreateBook
   def create_book(books)
     print 'Title: '
     title = gets.chomp
@@ -16,6 +15,16 @@ class Create_book
   end
 end
 
+class ListPeople
+  def list_people(people)
+    puts '---------------------------------'
+    people.each do |person|
+      puts "ID: #{person.id} Name: #{person.name} - #{person.class} "
+    end
+    puts '---------------------------------'
+  end
+end
+
 class App
   def initialize
     @books = []
@@ -24,21 +33,17 @@ class App
   end
 
   def create_book
-    Create_book.new.create_book(@books)
+    CreateBook.new.create_book(@books)
   end
+
+  def list_people
+    ListPeople.new.list_people(@people)
+  end
+
   def list_books
     puts '---------------------------------'
     @books.each_with_index do |book, index|
       puts "#{index + 1}. #{book.title} by #{book.author}"
-    end
-    puts '---------------------------------'
-  end
-
-  def list_people
-    puts @people[0].name
-    puts '---------------------------------'
-    @people.each do |person|
-      puts "ID: #{person.id} Name: #{person.name} - #{person.class} "
     end
     puts '---------------------------------'
   end
