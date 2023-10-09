@@ -29,7 +29,21 @@ class CreateTeacher
     specialization = gets.chomp
     people << Teacher.new(age, specialization, name: name)
   end
-end  
+end
+
+class Create_book
+  def create_book(books)
+    print 'Title: '
+    title = gets.chomp
+    print 'Author: '
+    author = gets.chomp
+    books << Book.new(title, author)
+    puts '---------------------------------'
+    puts 'Book created successfully!'
+    puts '-------------------------------'
+  end
+end
+
 
 class App
   def initialize
@@ -38,6 +52,9 @@ class App
     @people = []
   end
 
+  def create_book
+    Create_book.new.create_book(@books)
+  end
   def list_books
     puts '---------------------------------'
     @books.each_with_index do |book, index|
@@ -54,6 +71,7 @@ class App
     end
     puts '---------------------------------'
   end
+
   
   def create_person
     puts 'Do you want to create a student (1) or a teacher (2)?'
@@ -68,17 +86,6 @@ class App
     end
     puts '---------------------------------'
     puts 'Person created successfully'
-    puts '---------------------------------'
-  end
-
-  def create_book
-    print 'Title: '
-    title = gets.chomp
-    print 'Author: '
-    author = gets.chomp
-    @books << Book.new(title, author)
-    puts '---------------------------------'
-    puts 'Book created successfully!'
     puts '---------------------------------'
   end
 
