@@ -25,6 +25,16 @@ class ListPeople
   end
 end
 
+class ListBooks
+  def list_books(books)
+    puts '---------------------------------'
+    books.each_with_index do |book, index|
+      puts "#{index + 1}. #{book.title} by #{book.author}"
+    end
+    puts '---------------------------------'
+  end
+end
+
 class App
   def initialize
     @books = []
@@ -41,11 +51,7 @@ class App
   end
 
   def list_books
-    puts '---------------------------------'
-    @books.each_with_index do |book, index|
-      puts "#{index + 1}. #{book.title} by #{book.author}"
-    end
-    puts '---------------------------------'
+    ListBooks.new.list_books(@books)
   end
 
   def create_person
