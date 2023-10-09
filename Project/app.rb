@@ -3,6 +3,22 @@ require_relative 'teacher'
 require_relative 'book'
 require_relative 'rental'
 
+class CreateStudent
+  def create_student(people)
+    print 'Age: '
+    age = gets.chomp.to_i
+    print 'Name: '
+    name = gets.chomp
+    print 'Has parent permission? (Y/N): '
+    permission = gets.chomp.downcase == 'y'
+    people << if permission
+                 Student.new(age, name)
+               else
+                 Student.new(age, name, parent_permission: false)
+               end
+  end
+end
+
 class App
   def initialize
     @books = []
@@ -19,25 +35,12 @@ class App
   end
 
   def list_people
+    puts @people[0].name
     puts '---------------------------------'
     @people.each do |person|
       puts "ID: #{person.id} Name: #{person.name} - #{person.class} "
     end
     puts '---------------------------------'
-  end
-
-  def create_student
-    print 'Age: '
-    age = gets.chomp.to_i
-    print 'Name: '
-    name = gets.chomp
-    print 'Has parent permission? (Y/N): '
-    permission = gets.chomp.downcase == 'y'
-    @people << if permission
-                 Student.new(age, name)
-               else
-                 Student.new(age, name, parent_permission: false)
-               end
   end
 
   def create_teacher
@@ -55,7 +58,7 @@ class App
     person_type = gets.chomp.to_i
     case person_type
     when 1
-      create_student
+      CreateStudent.new.create_student(@people)
     when 2
       create_teacher
     else

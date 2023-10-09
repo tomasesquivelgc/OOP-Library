@@ -1,7 +1,6 @@
 require_relative 'app'
 
 class MenuInterface
-
   def handle_option(app, option)
     case option
     when 1 then app.create_person
