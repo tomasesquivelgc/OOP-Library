@@ -110,6 +110,17 @@ To run tests, run the following command:
 - Twitter: [@EsquivelTomas](https://twitter.com/EsquivelTomas)
 - LinkedIn: [Tomas Esquivel](https://www.linkedin.com/in/tomás-esquivel-b2160568/)
 
+👤 **Iván Gonzalez**
+
+- GitHub: [@ivangonzalez224](https://github.com/ivangonzalez224)
+- Twitter: [@Ivan Gonzalez](https://twitter.com/ivang2204)
+- LinkedIn: [Iván Gonzalez Robles](https://www.linkedin.com/in/iván-gonzalez-robles-957491275/)
+
+👤 **Karim David Barragan**
+
+- GitHub: [@Rebelzob](https://github.com/Rebelzob)
+- LinkedIn: [Karim David Barragan Montaña](https://www.linkedin.com/in/karim-barragan/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
