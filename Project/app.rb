@@ -19,6 +19,18 @@ class CreateStudent
   end
 end
 
+class CreateTeacher
+  def create_teacher(people)
+    print 'Age: '
+    age = gets.chomp.to_i
+    print 'Name: '
+    name = gets.chomp
+    print 'Specialization: '
+    specialization = gets.chomp
+    people << Teacher.new(age, specialization, name: name)
+  end
+end  
+
 class App
   def initialize
     @books = []
@@ -42,17 +54,7 @@ class App
     end
     puts '---------------------------------'
   end
-
-  def create_teacher
-    print 'Age: '
-    age = gets.chomp.to_i
-    print 'Name: '
-    name = gets.chomp
-    print 'Specialization: '
-    specialization = gets.chomp
-    @people << Teacher.new(age, specialization, name: name)
-  end
-
+  
   def create_person
     puts 'Do you want to create a student (1) or a teacher (2)?'
     person_type = gets.chomp.to_i
@@ -60,7 +62,7 @@ class App
     when 1
       CreateStudent.new.create_student(@people)
     when 2
-      create_teacher
+      CreateTeacher.new.create_teacher(@people)
     else
       puts 'Person type not recognized'
     end
