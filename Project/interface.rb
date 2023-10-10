@@ -35,6 +35,7 @@ class Menu
   end
 
   def run
+    puts 'Welcome to School Library App!'
     loop do
       option = display_options
       if option == 7
