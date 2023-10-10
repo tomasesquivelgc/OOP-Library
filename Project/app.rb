@@ -48,20 +48,19 @@ class App
   end
 
   def load_data
-    # @data_manager.load_data
-    # @books = @data_manager.books
-    LoadData.load_books
+    @data_manager.load_data
+    @books = @data_manager.books
+    @people = @data_manager.people
   end
 
   def save_data
-    SaveData.save_books
-    # @data_manager.save_books
+    @data_manager.save_books
     puts 'Book Save Successfully!'
   end
 
   def create_book
     CreateBook.new.create_book(@books)
-    save_data
+    @data_manager.save_data
   end
 
   def list_people
@@ -112,5 +111,10 @@ class App
       puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}"
     end
     puts '---------------------------------'
+  end
+
+  def exit
+    save_data
+    puts 'Goodbye!'
   end
 end

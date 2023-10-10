@@ -1,7 +1,11 @@
 require 'json'
+require_relative 'book_data'
+require_relative 'people_data'
 
 class DataManager
-  attr_accessor :books
+  include BookData
+  include PersonData
+  attr_accessor :books, :rentals, :people
 
   def initialize
     @books = []
@@ -10,32 +14,14 @@ class DataManager
   end
 
   def load_data
-    load_books
+    BookData.load_books(@books)
+    PersonData.load_people(@people)
   end
 
   def save_data
-    save_books
-    puts "Books Saved!"
+    BookData.save_books(@books)
+    PersonData.save_people(@people)
     rescue StandardError => e 
       puts "Error Saving Data: #{e.message}"
-  end
-
-  def save_books
-    File.open('database/books.json', 'w') do |file|
-      file.puts @books.map { |book|
-        { 'title' => book.title, 
-          'author' => book.author }
-      }.to_json
-    end
-  end
-
-  private
-
-  def load_books
-    return unless File.exist?('database/books.json')
-    json_str = File.read('database/books.json')
-    @books = JSON.parse(json_str).map do |book_data|
-      Book.new(book_data['title'], book_data['author'])
-    end
   end
 end
