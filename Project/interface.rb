@@ -1,9 +1,7 @@
 require_relative 'app'
-require_relative 'data/load_data'
-require_relative 'data/save_data'
+
 class Menu
-  include LoadData
-  include SaveData
+
   def initialize(app)
     @app = app
   end
@@ -40,12 +38,10 @@ class Menu
 
   def run
     puts 'Welcome to School Library App!'
-    LoadData::load_data
     loop do
       option = display_options
       if option == 7
-        SaveData::save_data
-        puts 'Thank you for using this app!'
+        @app.exit
         break
       end
       handle_option(option)
