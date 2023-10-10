@@ -2,6 +2,8 @@ require_relative 'create_user'
 require_relative 'book'
 require_relative 'rental'
 require_relative 'data/data_manager'
+require_relative 'data/load_data'
+require_relative 'data/save_data'
 
 class CreateBook
   def create_book(books)
@@ -41,17 +43,19 @@ class App
     @books = []
     @rentals = []
     @people = []
-    @data_manager = DataManager.new
-    load_data
+    # @data_manager = DataManager.new
+    # load_data
   end
 
   def load_data
-    @data_manager.load_data
-    @books = @data_manager.books
+    # @data_manager.load_data
+    # @books = @data_manager.books
+    LoadData.load_books
   end
 
   def save_data
-    @data_manager.save_books
+    SaveData.save_books
+    # @data_manager.save_books
     puts 'Book Save Successfully!'
   end
 

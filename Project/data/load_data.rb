@@ -12,7 +12,9 @@ module LoadData
   def self.load_books
     return unless File.exist?('database/books.json')
     json_str = File.read('database/books.json')
-    @books = JSON.parse(json_str).map do |book_data|
+    print 'libros: '
+    puts json_str
+    @books = JSON.parse(json_str).first.map do |book_data|
       Book.new(book_data['title'], book_data['author'])
     end
   end
