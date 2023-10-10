@@ -55,7 +55,6 @@ class App
   end
 
   def create_person
-    puts 'Do you want to create a student (1) or a teacher (2)?'
     person_type = gets.chomp.to_i
     case person_type
     when 1
@@ -71,14 +70,13 @@ class App
   end
 
   def create_rental
-    puts 'Select a book from the following list by number'
     list_books
     book_index = gets.chomp.to_i - 1
     puts 'Select a student from the following list by ID'
     list_people
     person_id = gets.chomp.to_i
     selected_person = @people.find { |person| person.id == person_id }
-    puts 'Date: '
+    print 'Date: '
     date = gets.chomp
     @rentals << Rental.new(date, selected_person, @books[book_index])
     puts '---------------------------------'
@@ -87,13 +85,13 @@ class App
   end
 
   def list_rentals
-    puts 'Please select a person by ID to see their rentals'
     list_people
+    print 'ID of person: '
     person_id = gets.chomp.to_i
     selected_person = @people.find { |person| person.id == person_id }
-    puts '---------------------------------'
+    puts 'Rentals:'
     selected_person.rental.each do |rental|
-      puts "Book: #{rental.book.title} - Date: #{rental.date}"
+      puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}"
     end
     puts '---------------------------------'
   end
