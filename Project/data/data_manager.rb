@@ -5,8 +5,8 @@ class DataManager
 
   def initialize
     @books = []
-    @people = []
     @rentals = []
+    @people = []
   end
 
   def load_data
@@ -21,7 +21,7 @@ class DataManager
   end
 
   def save_books
-    File.open('books.json', 'w') do |file|
+    File.open('database/books.json', 'w') do |file|
       file.puts @books.map { |book|
         { 'title' => book.title, 
           'author' => book.author }
@@ -29,13 +29,11 @@ class DataManager
     end
   end
 
-  def save_people
-
   private
 
   def load_books
-    return unless File.exist?('books.json')
-    json_str = File.read('books.json')
+    return unless File.exist?('database/books.json')
+    json_str = File.read('database/books.json')
     @books = JSON.parse(json_str).map do |book_data|
       Book.new(book_data['title'], book_data['author'])
     end
