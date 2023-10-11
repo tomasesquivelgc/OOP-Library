@@ -14,3 +14,12 @@ describe Teacher do
   end
 end
 
+describe Teacher do
+  describe '#can_use_services?' do
+    it 'always returns true' do
+      teacher = Teacher.new(35, 'Programming', 'Rose')
+
+      expect(teacher.can_use_services?).to be(true)
+    end
+  end
+end
