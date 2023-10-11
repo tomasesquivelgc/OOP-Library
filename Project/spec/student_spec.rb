@@ -37,5 +37,14 @@ describe Student do
 
       expect(student.classroom).to be_nil
     end
+
+    it 'adds the student to the classroom\'s student list' do
+      classroom = Classroom.new('Science')
+      student = Student.new(19, 'Felix', 195)
+
+      student.classroom = classroom
+
+      expect(classroom.students).to include(student)
+    end
   end
 end
