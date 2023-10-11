@@ -23,6 +23,6 @@ class CreateUser
     name = gets.chomp
     print 'Specialization: '
     specialization = gets.chomp
-    people << Teacher.new(age, specialization, name: name)
+    people << Teacher.new(age, specialization, name)
   end
 end

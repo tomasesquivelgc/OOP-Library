@@ -10,16 +10,16 @@ module PersonData
       }.to_json
     end
   end
-  
+
   def self.load_people(people)
     return unless File.exist?('database/people.json')
+
     file = File.read('database/people.json')
     people_hash = JSON.parse(file)
-    puts people_hash
-    people_hash.each_with_index do |person, index|
-      if person["class"] == "Student"
+    people_hash.each do |person|
+      if person['class'] == 'Student'
         people << Student.new(person['age'], person['name'], person['id'])
-      elsif person["class"] == "Teacher"
+      elsif person['class'] == 'Teacher'
         people << Teacher.new(person['age'], person['specialization'], person['name'], person['id'])
       end
     end

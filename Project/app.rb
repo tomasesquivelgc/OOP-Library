@@ -49,6 +49,7 @@ class App
     @data_manager.load_data
     @books = @data_manager.books
     @people = @data_manager.people
+    @rentals = @data_manager.rentals
   end
 
   def save_data
@@ -56,7 +57,7 @@ class App
   end
 
   def create_book
-    CreateBook.new.create_book(@books) 
+    CreateBook.new.create_book(@books)
   end
 
   def list_people
