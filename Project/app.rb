@@ -2,6 +2,7 @@ require_relative 'modules/create_user'
 require_relative 'book'
 require_relative 'rental'
 require_relative 'data/data_manager'
+require_relative 'modules/list_books'
 
 class CreateBook
   def create_book(books)
@@ -26,18 +27,9 @@ class ListPeople
   end
 end
 
-class ListBooks
-  def list_books(books)
-    puts '---------------------------------'
-    books.each_with_index do |book, index|
-      puts "#{index + 1}. #{book.title} by #{book.author}"
-    end
-    puts '---------------------------------'
-  end
-end
-
 class App
   include CreateUser
+  include ListBooks
   def initialize
     @books = []
     @rentals = []
@@ -66,7 +58,7 @@ class App
   end
 
   def list_books
-    ListBooks.new.list_books(@books)
+    ListBooks.list_books(@books)
   end
 
   def create_person
