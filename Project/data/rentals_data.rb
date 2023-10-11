@@ -11,13 +11,15 @@ module RentalData
     end
   end
 
-  def self.load_rentals(rentals)
+  def self.load_rentals(rentals, books, people)
     return unless File.exist?('database/rentals.json')
 
     file = File.read('database/rentals.json')
     rentals_hash = JSON.parse(file)
     rentals_hash.each do |rental|
-      rentals << Rental.new(rental['date'], rental['person'], rental['book'])
+      book_checked = books.find { |book| book.title == rental['book'] }
+      person_checked = people.find { |person| person.id == rental['person'] }
+      rentals << Rental.new(rental['date'], person_checked, book_checked)
     end
     rentals
   end

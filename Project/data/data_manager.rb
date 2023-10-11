@@ -18,7 +18,7 @@ class DataManager
   def load_data
     BookData.load_books(@books)
     PersonData.load_people(@people)
-    RentalData.load_rentals(@rentals)
+    RentalData.load_rentals(@rentals, @books, @people)
   end
 
   def save_data

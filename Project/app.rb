@@ -112,6 +112,6 @@ class App
 
   def exit
     save_data
-    puts 'Goodbye!'
+    puts 'Thak you for using this app!'
   end
 end
