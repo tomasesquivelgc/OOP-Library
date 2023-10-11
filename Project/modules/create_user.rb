@@ -1,5 +1,5 @@
-require_relative 'student'
-require_relative 'teacher'
+require_relative '../student'
+require_relative '../teacher'
 
 class CreateUser
   def create_student(people)
