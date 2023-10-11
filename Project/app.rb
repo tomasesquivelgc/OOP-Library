@@ -4,12 +4,14 @@ require_relative 'data/data_manager'
 require_relative 'modules/list_books'
 require_relative 'modules/list_people'
 require_relative 'modules/create_book'
+require_relative 'modules/list_rentals'
 
 class App
   include CreateUser
   include ListBooks
   include ListPeople
   include CreateBook
+  include ListRentals
 
   def initialize
     @books = []
@@ -63,14 +65,7 @@ class App
 
   def list_rentals
     list_people
-    print 'ID of person: '
-    person_id = gets.chomp.to_i
-    selected_person = @people.find { |person| person.id == person_id }
-    puts 'Rentals:'
-    selected_person.rental.each do |rental|
-      puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}"
-    end
-    puts '---------------------------------'
+    ListRentals.list_rentals(@people)
   end
 
   def exit
