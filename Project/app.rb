@@ -37,6 +37,8 @@ class ListBooks
 end
 
 class App
+include CreateUser
+
   def initialize
     @books = []
     @rentals = []
@@ -72,9 +74,9 @@ class App
     person_type = gets.chomp.to_i
     case person_type
     when 1
-      CreateUser.new.create_student(@people)
+      CreateUser.create_student(@people)
     when 2
-      CreateUser.new.create_teacher(@people)
+      CreateUser.create_teacher(@people)
     else
       puts 'Person type not recognized'
     end
