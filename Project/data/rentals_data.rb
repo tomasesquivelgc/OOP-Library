@@ -5,8 +5,8 @@ module RentalData
     File.open('database/rentals.json', 'w') do |file|
       file.puts rentals.map { |rental|
         { 'date' => rental.date,
-          'person' => rental.person,
-          'book' => rental.book }
+          'person' => rental.person.id,
+          'book' => rental.book.title }
       }.to_json
     end
   end
