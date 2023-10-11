@@ -1,10 +1,10 @@
-require_relative 'create_user'
+require_relative 'modules/create_user'
 require_relative 'book'
 require_relative 'rental'
 require_relative 'data/data_manager'
 
-class CreateBook
-  def create_book(books)
+module CreateBook
+  def self.create_book(books)
     print 'Title: '
     title = gets.chomp
     print 'Author: '
@@ -58,7 +58,7 @@ include CreateUser
   end
 
   def create_book
-    CreateBook.new.create_book(@books)
+    CreateBook.create_book(@books)
     @data_manager.save_data
   end
 
