@@ -11,7 +11,7 @@ module PersonData
       }.to_json
     end
   end
-  
+
   def self.load_people(people)
     return unless File.exist?('database/people.json')
 
