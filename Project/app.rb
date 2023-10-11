@@ -56,8 +56,7 @@ class App
   end
 
   def create_book
-    CreateBook.new.create_book(@books)
-    @data_manager.save_data
+    CreateBook.new.create_book(@books) 
   end
 
   def list_people
