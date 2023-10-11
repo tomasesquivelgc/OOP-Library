@@ -11,3 +11,13 @@ describe Student do
     end
   end
 end
+
+describe Student do
+  describe '#play_hooky' do
+    it 'returns the string "¯(ツ)/¯"' do
+      student = Student.new(19, 'María', 987)
+
+      expect(student.play_hooky).to eq('¯(ツ)/¯')
+    end
+  end
+end
