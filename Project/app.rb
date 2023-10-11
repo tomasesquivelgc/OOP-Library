@@ -3,16 +3,9 @@ require_relative 'rental'
 require_relative 'data/data_manager'
 require_relative 'modules/create_book'
 require_relative 'modules/list_people'
+require_relative 'modules/list_books'
 
-class ListBooks
-  def list_books(books)
-    puts '---------------------------------'
-    books.each_with_index do |book, index|
-      puts "#{index + 1}. #{book.title} by #{book.author}"
-    end
-    puts '---------------------------------'
-  end
-end
+
 
 class App
 include CreateUser
@@ -44,7 +37,7 @@ include CreateUser
   end
 
   def list_books
-    ListBooks.new.list_books(@books)
+    ListBooks.list_books(@books)
   end
 
   def create_person
@@ -63,6 +56,7 @@ include CreateUser
   end
 
   def create_rental
+    puts 'Select a book from the following list by number'
     list_books
     book_index = gets.chomp.to_i - 1
     puts 'Select a student from the following list by ID'
