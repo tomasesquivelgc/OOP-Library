@@ -1,10 +1,10 @@
 require_relative 'modules/create_user'
-require_relative 'rental'
 require_relative 'data/data_manager'
 require_relative 'modules/list_books'
 require_relative 'modules/list_people'
 require_relative 'modules/create_book'
 require_relative 'modules/list_rentals'
+require_relative 'modules/create_rental'
 
 class App
   include CreateUser
@@ -12,6 +12,7 @@ class App
   include ListPeople
   include CreateBook
   include ListRentals
+  include CreateRental
 
   def initialize
     @books = []
@@ -53,14 +54,7 @@ class App
     book_index = gets.chomp.to_i - 1
     puts 'Select a student from the following list by ID'
     list_people
-    person_id = gets.chomp.to_i
-    selected_person = @people.find { |person| person.id == person_id }
-    print 'Date: '
-    date = gets.chomp
-    @rentals << Rental.new(date, selected_person, @books[book_index])
-    puts '---------------------------------'
-    puts 'Rental created successfully!'
-    puts '---------------------------------'
+    CreateRental.create_rental(@people, @rentals, @books, book_index)
   end
 
   def list_rentals
