@@ -29,10 +29,6 @@ class App
     @rentals = @data_manager.rentals
   end
 
-  def save_data
-    @data_manager.save_data
-  end
-
   def create_book
     CreateBook.create_book(@books)
   end
@@ -63,7 +59,7 @@ class App
   end
 
   def exit
-    save_data
+    @data_manager.save_data
     puts 'Thak you for using this app!'
   end
 end
