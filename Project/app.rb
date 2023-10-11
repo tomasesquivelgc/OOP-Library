@@ -1,30 +1,8 @@
 require_relative 'modules/create_user'
-require_relative 'book'
 require_relative 'rental'
 require_relative 'data/data_manager'
-
-module CreateBook
-  def self.create_book(books)
-    print 'Title: '
-    title = gets.chomp
-    print 'Author: '
-    author = gets.chomp
-    books << Book.new(title, author)
-    puts '---------------------------------'
-    puts 'Book created successfully!'
-    puts '-------------------------------'
-  end
-end
-
-class ListPeople
-  def list_people(people)
-    puts '---------------------------------'
-    people.each do |person|
-      puts "ID: #{person.id} Name: #{person.name} - #{person.class} "
-    end
-    puts '---------------------------------'
-  end
-end
+require_relative 'modules/create_book'
+require_relative 'modules/list_people'
 
 class ListBooks
   def list_books(books)
@@ -59,11 +37,10 @@ include CreateUser
 
   def create_book
     CreateBook.create_book(@books)
-    @data_manager.save_data
   end
 
   def list_people
-    ListPeople.new.list_people(@people)
+    ListPeople.list_people(@people)
   end
 
   def list_books
