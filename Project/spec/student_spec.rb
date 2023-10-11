@@ -1,4 +1,5 @@
 require_relative '../student'
+require_relative '../classroom'
 
 describe Student do
   describe '#initialize' do
@@ -18,6 +19,23 @@ describe Student do
       student = Student.new(19, 'María', 987)
 
       expect(student.play_hooky).to eq('¯(ツ)/¯')
+    end
+  end
+end
+
+describe Student do
+  describe '#classroom' do
+    it 'returns the student\'s classroom' do
+      classroom = Classroom.new('Coding')
+      student = Student.new(17, 'Kobe', 537, classroom: classroom)
+
+      expect(student.classroom).to eq(classroom)
+    end
+
+    it 'returns nil if the student does not have a classroom' do
+      student = Student.new(17, 'Kobe', 537)
+
+      expect(student.classroom).to be_nil
     end
   end
 end
