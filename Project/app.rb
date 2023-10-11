@@ -1,6 +1,7 @@
 require_relative 'create_user'
 require_relative 'book'
 require_relative 'rental'
+require_relative 'data/data_manager'
 
 class CreateBook
   def create_book(books)
@@ -40,6 +41,19 @@ class App
     @books = []
     @rentals = []
     @people = []
+    @data_manager = DataManager.new
+    load_data
+  end
+
+  def load_data
+    @data_manager.load_data
+    @books = @data_manager.books
+    @people = @data_manager.people
+    @rentals = @data_manager.rentals
+  end
+
+  def save_data
+    @data_manager.save_data
   end
 
   def create_book
@@ -94,5 +108,10 @@ class App
       puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author}"
     end
     puts '---------------------------------'
+  end
+
+  def exit
+    save_data
+    puts 'Thak you for using this app!'
   end
 end

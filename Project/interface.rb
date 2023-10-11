@@ -1,4 +1,5 @@
 require_relative 'app'
+
 class Menu
   def initialize(app)
     @app = app
@@ -39,7 +40,7 @@ class Menu
     loop do
       option = display_options
       if option == 7
-        puts 'Thak you for using this app!'
+        @app.exit
         break
       end
       handle_option(option)
