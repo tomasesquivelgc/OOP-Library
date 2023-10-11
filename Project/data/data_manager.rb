@@ -21,7 +21,7 @@ class DataManager
   def save_data
     BookData.save_books(@books)
     PersonData.save_people(@people)
-    rescue StandardError => e 
-      puts "Error Saving Data: #{e.message}"
+  rescue StandardError => e
+    puts "Error Saving Data: #{e.message}"
   end
 end

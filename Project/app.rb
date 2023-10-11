@@ -5,10 +5,8 @@ require_relative 'modules/create_book'
 require_relative 'modules/list_people'
 require_relative 'modules/list_books'
 
-
-
 class App
-include CreateUser
+  include CreateUser
 
   def initialize
     @books = []
