@@ -6,9 +6,9 @@ module CreateUser
     person_type = gets.chomp.to_i
     case person_type
     when 1
-      self.create_student(people)
+      create_student(people)
     when 2
-      self.create_teacher(people)
+      create_teacher(people)
     else
       puts 'Person type not recognized'
     end
